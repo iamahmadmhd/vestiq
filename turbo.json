@@ -1,0 +1,19 @@
+{
+    "$schema": "https://turborepo.com/schema.json",
+    "agentGuidance": false,
+    "tasks": {
+        "typecheck": {
+            "dependsOn": ["^typecheck"],
+            "inputs": ["$TURBO_DEFAULT$", "!**/*.md"]
+        },
+        "test": {
+            "dependsOn": ["^typecheck"],
+            "inputs": ["$TURBO_DEFAULT$", "!**/*.md"]
+        },
+        "synth": {
+            "dependsOn": ["^typecheck"],
+            "outputs": ["cdk.out/**"],
+            "cache": false
+        }
+    }
+}
