@@ -1,0 +1,120 @@
+/*
+ * Vestiq design tokens, shared across apps (mobile today, web later).
+ * Mapped onto the shadcn/React Native Reusables semantic names (background, primary, border…);
+ * each one points at a design-system token, named in the comment beside it. Tokens with no
+ * shadcn/RNR equivalent (sun, amber, scrim…) are added under their own names.
+ *
+ * Platform-specific tokens (fonts, RN's hairline spacing) are NOT here — each app layers its own
+ * `@theme` block with those on top after importing this file.
+ */
+
+@theme {
+    /* Radius: the studio stays square-ish. shadcn/RNR use rounded-md for buttons and inputs and
+     rounded-lg/xl for cards and dialogs, so lg and xl stay at 8px; sheets use rounded-sheet. */
+    --radius: 0px;
+    --radius-sheet: 24px; /* radius-lg: top corners of sheets only */
+    /* rounded-full (radius-full) is Tailwind's default: only what floats or is the AI */
+
+    /* Shadows: fixed geometry here, the colour per theme below. Only the tab bar floats. */
+    --shadow-float: 0 6px 20px var(--color-shadow-float); /* shadow-float: the tab bar */
+    --shadow-sheet: 0 -8px 30px var(--color-shadow-sheet); /* shadow-sheet: sheets */
+
+    /* Type scale. Letter spacing is in px, not em, so it renders identically on native and web. */
+    --text-display: 34px;
+    --text-display--line-height: 36px;
+    --text-display--letter-spacing: -1.19px;
+    --text-title: 30px;
+    --text-title--line-height: 34px;
+    --text-title--letter-spacing: -1.05px;
+    --text-heading: 22px;
+    --text-heading--line-height: 28px;
+    --text-heading--letter-spacing: -0.44px;
+    --text-reason: 18px;
+    --text-reason--line-height: 24px;
+    --text-reason--letter-spacing: -0.18px;
+    --text-body: 16px;
+    --text-body--line-height: 22px;
+    --text-button: 16px;
+    --text-button--line-height: 20px;
+    --text-subhead: 15px;
+    --text-subhead--line-height: 20px;
+    --text-caption: 13px;
+    --text-caption--line-height: 18px;
+    --text-tab: 11px;
+    --text-tab--line-height: 14px;
+    --text-data: 11px;
+    --text-data--line-height: 14px;
+    --text-data--letter-spacing: 0.44px;
+}
+
+@layer theme {
+    :root {
+        @variant light {
+            /* shadcn/RNR semantic tokens */
+            --color-background: #ffffff; /* wall */
+            --color-foreground: #111111; /* ink */
+            --color-card: #ffffff; /* wall-raised */
+            --color-card-foreground: #111111; /* ink */
+            --color-popover: #ffffff; /* wall-raised */
+            --color-popover-foreground: #111111; /* ink */
+            --color-primary: #111111; /* ink: the primary button fill */
+            --color-primary-foreground: #ffffff; /* on-ink */
+            --color-secondary: #efefec; /* plinth */
+            --color-secondary-foreground: #111111; /* ink */
+            --color-muted: #efefec; /* plinth: behind garment images and tiles */
+            --color-muted-foreground: #5e5e5a; /* graphite */
+            --color-accent: #efefec; /* plinth: quiet fills, pressed and selected states */
+            --color-accent-foreground: #111111; /* ink */
+            --color-destructive: #b3261e; /* danger */
+            --color-destructive-foreground: #ffffff; /* label on a danger fill (added) */
+            --color-border: #e2e2de; /* line: decorative hairlines only */
+            --color-input: #8c8c88; /* edge: borders of controls that must be seen */
+            --color-ring: #111111; /* focus = ink */
+
+            /* Design-system tokens with no shadcn/RNR equivalent */
+            --color-sun: #f2a23a; /* the AI's fill; never text */
+            --color-sun-halo: rgba(242, 162, 58, 0.25);
+            --color-on-sun: #111111;
+            --color-amber: #8a4a00; /* text that speaks for the AI */
+            --color-amber-soft: #fff1dd;
+            --color-danger-soft: #fde7e5;
+            --color-scrim: rgba(17, 17, 17, 0.32);
+
+            --color-shadow-float: rgba(17, 17, 17, 0.08);
+            --color-shadow-sheet: rgba(17, 17, 17, 0.12);
+        }
+
+        @variant dark {
+            --color-background: #0f0f0e; /* wall */
+            --color-foreground: #f3f2ee; /* ink */
+            --color-card: #1a1a18; /* wall-raised */
+            --color-card-foreground: #f3f2ee; /* ink */
+            --color-popover: #1a1a18; /* wall-raised */
+            --color-popover-foreground: #f3f2ee; /* ink */
+            --color-primary: #f3f2ee; /* ink */
+            --color-primary-foreground: #111111; /* on-ink */
+            --color-secondary: #262624; /* plinth */
+            --color-secondary-foreground: #f3f2ee; /* ink */
+            --color-muted: #262624; /* plinth */
+            --color-muted-foreground: #a6a59f; /* graphite */
+            --color-accent: #262624; /* plinth */
+            --color-accent-foreground: #f3f2ee; /* ink */
+            --color-destructive: #ff8a80; /* danger */
+            --color-destructive-foreground: #111111; /* label on a danger fill (added) */
+            --color-border: #2e2e2b; /* line */
+            --color-input: #75746e; /* edge */
+            --color-ring: #f3f2ee; /* focus = ink */
+
+            --color-sun: #f2a23a;
+            --color-sun-halo: rgba(242, 162, 58, 0.25);
+            --color-on-sun: #111111;
+            --color-amber: #f5b85c;
+            --color-amber-soft: #33240f;
+            --color-danger-soft: #3a1614;
+            --color-scrim: rgba(0, 0, 0, 0.56);
+
+            --color-shadow-float: rgba(0, 0, 0, 0.45);
+            --color-shadow-sheet: rgba(0, 0, 0, 0.5);
+        }
+    }
+}
