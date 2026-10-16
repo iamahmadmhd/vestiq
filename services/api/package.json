@@ -1,0 +1,19 @@
+{
+    "name": "@vestiq/api",
+    "version": "0.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "typecheck": "tsc -p tsconfig.json",
+        "test": "vitest run"
+    },
+    "dependencies": {
+        "@vestiq/contracts": "workspace:*",
+        "@vestiq/domain": "workspace:*"
+    },
+    "devDependencies": {
+        "@types/aws-lambda": "^8.10.164",
+        "@types/node": "^22.10.0",
+        "vitest": "^5.0.4"
+    }
+}
