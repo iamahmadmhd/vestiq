@@ -1,0 +1,4 @@
+# No CI server: this is the gate before code leaves the machine.
+# Turbo caches results, so unchanged packages are skipped.
+pnpm exec turbo run typecheck test
+pnpm synth
