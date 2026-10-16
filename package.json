@@ -9,6 +9,7 @@
         "prepare": "husky",
         "typecheck": "turbo run typecheck",
         "test": "turbo run test",
+        "synth": "turbo run synth",
         "lint": "eslint .",
         "format": "prettier --write .",
         "format:check": "prettier --check ."
