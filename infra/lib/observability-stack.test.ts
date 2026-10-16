@@ -3,11 +3,11 @@ import { Template } from 'aws-cdk-lib/assertions';
 import { describe, expect, it } from 'vitest';
 
 import { stageFromContext } from '../config/stages';
-import { BudgetStack } from './budget-stack';
+import { ObservabilityStack } from './observability-stack';
 
 function synth(alertEmail: string | undefined) {
     const app = new App();
-    const stack = new BudgetStack(app, 'Budget', {
+    const stack = new ObservabilityStack(app, 'Observability', {
         stage: stageFromContext('dev'),
         limitUsd: 10,
         alertEmail,
@@ -15,7 +15,7 @@ function synth(alertEmail: string | undefined) {
     return Template.fromStack(stack);
 }
 
-describe('BudgetStack', () => {
+describe('ObservabilityStack', () => {
     it('creates a $10 monthly cost budget with email alerts', () => {
         const t = synth('me@example.com');
         t.hasResourceProperties('AWS::Budgets::Budget', {

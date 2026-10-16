@@ -4,17 +4,21 @@ import type { Construct } from 'constructs';
 
 import type { StageConfig } from '../config/stages';
 
-export interface BudgetStackProps extends StackProps {
+export interface ObservabilityStackProps extends StackProps {
     stage: StageConfig;
-    /** Monthly limit in USD. */
+    /** Monthly budget limit in USD. */
     limitUsd: number;
-    /** Who gets the alerts; without it the budget exists but nobody is notified. */
+    /** Who gets the budget alerts; without it the budget exists but nobody is notified. */
     alertEmail: string | undefined;
 }
 
-/** A monthly cost budget that emails at 80% actual and 100% forecast spend. */
-export class BudgetStack extends Stack {
-    constructor(scope: Construct, id: string, props: BudgetStackProps) {
+/**
+ * A monthly cost budget that emails at 80% actual and 100% forecast spend.
+ * The dashboard, alarms and SNS topic from the roadmap's hardening step land in this same
+ * stack once the Pipeline/Api Lambdas they watch exist.
+ */
+export class ObservabilityStack extends Stack {
+    constructor(scope: Construct, id: string, props: ObservabilityStackProps) {
         super(scope, id, props);
 
         const subscribers = props.alertEmail

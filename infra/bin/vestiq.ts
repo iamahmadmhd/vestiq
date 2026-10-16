@@ -3,7 +3,7 @@ import 'dotenv/config';
 
 import { stageFromContext } from '../config/stages';
 import { ApiStack } from '../lib/api-stack';
-import { BudgetStack } from '../lib/budget-stack';
+import { ObservabilityStack } from '../lib/observability-stack';
 
 const app = new App();
 const stage = stageFromContext(app.node.tryGetContext('stage'));
@@ -13,7 +13,7 @@ const prefix = `Vestiq-${stage.name}`;
 Tags.of(app).add('app', 'vestiq');
 Tags.of(app).add('stage', stage.name);
 
-new BudgetStack(app, `${prefix}-Budget`, {
+new ObservabilityStack(app, `${prefix}-Observability`, {
     env,
     stage,
     limitUsd: 10,
